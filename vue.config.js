@@ -50,7 +50,7 @@ module.exports = {
         }
       }
     },
-    before: (app) => {      
+    before: (app) => {
       if (argv.MOCK) {
         const mock = require('./mock/mock-server.js')
         mock(app)
@@ -58,6 +58,7 @@ module.exports = {
     }
   },
   configureWebpack: {
+    devtool: 'source-map',
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.
     name: name,
