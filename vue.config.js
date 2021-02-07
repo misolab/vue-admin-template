@@ -49,7 +49,7 @@ module.exports = {
       }
     },
     before: (app) => {
-      if (process.env.NODE_ENV === 'mock') {
+      if (process.env.ENV === 'mock') {
         const mock = require('./mock/mock-server.js')
         mock(app)
       }
