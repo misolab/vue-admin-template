@@ -78,14 +78,16 @@ service.interceptors.response.use(
     }
   },
   error => {
-    console.log('error', error.response)
+    console.log('error.response', error.response)
 
     let errorMessage = error.message
     try {
       const body = error.response.data
       const { code, message } = body
       errorMessage = `${message} (${code})`
-    } catch (error) {}
+    } catch (err) {
+      console.log('err', err)
+    }
 
     Message({
       message: errorMessage,

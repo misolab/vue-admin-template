@@ -29,10 +29,10 @@ export default {
   methods: {
     getBreadcrumb() {
       // only show routes with meta.title
-      let matched = this.$route.matched.filter(item => item.meta && item.meta.title)
-      const first = matched[0]
+      const matched = this.$route.matched.filter(item => item.meta && item.meta.title)
 
       //  헤더에 Dashboard 고정값 제거
+      // const first = matched[0]
       // if (!this.isDashboard(first)) {
       //   matched = [{ path: '/dashboard', meta: { title: 'Dashboard' }}].concat(matched)
       // }
