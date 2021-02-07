@@ -1,5 +1,8 @@
 
 const tokens = {
+  gauss: {
+    token: 'admin-token'
+  },
   admin: {
     token: 'admin-token'
   },

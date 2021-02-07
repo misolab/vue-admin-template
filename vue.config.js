@@ -2,8 +2,6 @@
 const path = require('path')
 const defaultSettings = require('./src/settings.js')
 
-const { argv } = require('yargs')
-
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
@@ -41,17 +39,17 @@ module.exports = {
     proxy: {
       // change xxx-api/login => /mock-api/v1/login
       // detail: https://cli.vuejs.org/config/#devserver-proxy
-      [process.env.VUE_APP_BASE_API]: {
+      '/api': {
         target: `http://localhost:8090/api`,
         changeOrigin: true, // needed for virtual hosted sites
         ws: true, // proxy websockets
         pathRewrite: {
-          ['^' + process.env.VUE_APP_BASE_API]: ''
+          '^/api': ''
         }
       }
     },
     before: (app) => {
-      if (argv.MOCK) {
+      if (process.env.NODE_ENV === 'mock') {
         const mock = require('./mock/mock-server.js')
         mock(app)
       }
